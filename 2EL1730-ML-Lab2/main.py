@@ -4,7 +4,7 @@ from predict import predict
 
 # Load data (Wine dataset)
 np.random.seed(1)
-my_data = np.genfromtxt('wine_data.csv', delimiter=',')
+my_data = np.genfromtxt(r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab2\wine_data.csv', delimiter=',')
 np.random.shuffle(my_data)  # shuffle datataset
 
 n_train = 100

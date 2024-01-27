@@ -9,10 +9,14 @@
 import numpy as np
 import pandas as pd
 import pylab as plt
+from tqdm import tqdm
+
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 
 ### Fetch the data and load it in pandas
-data = pd.read_csv('train.csv')
+data = pd.read_csv(r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab4\train.csv')
 print("Size of the data: ", data.shape)
 
 #%%
@@ -70,28 +74,48 @@ print(accuracy_score(y_test, y_pred))
 # Once the code is finished, play around with the hyperparameters (D and T), 
 # and try to understand what is happening.
 
-D = 2 # tree depth
-T = 10 # number of trees
-w = np.ones(X_train.shape[0]) / X_train.shape[0] # weight initialization
-training_scores = np.zeros(X_train.shape[0]) # init scores with 0
-test_scores     = np.zeros(X_test.shape[0])
- 
-# init errors
-training_errors = []
-test_errors = []
+def train_AdaBoost(T,D) : 
+    w = np.ones(X_train.shape[0]) / X_train.shape[0] # weight initialization
+    training_scores = np.zeros(X_train.shape[0]) # init scores with 0
+    test_scores     = np.zeros(X_test.shape[0])
 
-#===============================
-for t in range(T):
-    
-    # Your code should go here
-    
+    # init errors
+    training_errors = []
+    test_errors = []
+
+    #===============================
+    for t in range(T):
+        clf = DecisionTreeClassifier(max_depth=D)
+        try : 
+            yt = clf.fit(X_train, y_train, sample_weight=w)
+            train_preds = yt.predict(X_train)
+            test_preds = yt.predict(X_test)
+            gammat = 0
+            indicator = np.not_equal(train_preds, y_train)
+            gammat = np.sum(w[indicator])/np.sum(w)
+            alphat = (1/2)*np.log((1-gammat)/gammat)
+
+            w *= np.exp(alphat * indicator)
+            # calculate scores and errors for this tree
+            training_scores += alphat * train_preds
+            training_error = 1. * len(training_scores[training_scores * y_train < 0]) / len(X_train)
+            # calculate test error and score
+            test_scores += alphat * test_preds
+            test_error = 1. * len(test_scores[test_scores * y_test < 0]) / len(X_test)
+            #print(t, ": ", alpha, gamma, training_error, test_error)
+
+            training_errors.append(training_error)
+            test_errors.append(test_error)
+        except Exception :
+            pass
+
+    return training_errors, test_errors
 
 #===============================
 
 #  Plot training and test error    
-plt.plot(training_errors, label="training error")
-plt.plot(test_errors, label="test error")
-plt.legend()
+
+# plt.legend()
 
 #===================================================================
 #%%
@@ -106,6 +130,14 @@ plt.legend()
 #===============================
 
 # Your code should go here
-    
+final_scores_train = []
+final_scores_test = []
+for  D in tqdm(range(1,15)) :
+    training_errors, test_errors = train_AdaBoost(100,D)
+    final_scores_train.append(training_errors[-1])
+    final_scores_test.append(test_errors[-1])
+plt.plot(final_scores_train, label = 'training')
+plt.plot(final_scores_test, label = 'test')
+plt.show()
 
 #===============================

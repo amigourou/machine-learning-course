@@ -7,11 +7,11 @@ def loadMnist(dataset="training", digits=np.arange(10)):
     # Loads MNIST files into 3D numpy arrays
 
     if dataset == "training":
-        fname_img = '../Data/train-images.idx3-ubyte'
-        fname_lbl = '../Data/train-labels.idx1-ubyte'
+        fname_img = r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab3\Data\train-images.idx3-ubyte'
+        fname_lbl = r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab3\Data\train-labels.idx1-ubyte'
     elif dataset == "testing":
-        fname_img = '../Data/t10k-images.idx3-ubyte'
-        fname_lbl = '../Data/t10k-labels.idx1-ubyte'
+        fname_img = r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab3\Data\t10k-images.idx3-ubyte'
+        fname_lbl = r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab3\Data\t10k-labels.idx1-ubyte'
     else:
         raise ValueError("dataset must be 'testing' or 'training'")
 

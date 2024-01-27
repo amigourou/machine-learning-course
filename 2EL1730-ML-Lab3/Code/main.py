@@ -36,8 +36,10 @@ for i in range(testImages.shape[0]):
     
 # Calculate accuracy
 correct = 0
-
 for i in range(testImages.shape[0]):
+    plt.imshow(testImages[i,:].reshape(28,28))
+    plt.title(str(predictedDigits[i]))
+    plt.show()
     if predictedDigits[i] == testLabels[i]:
         correct += 1
         

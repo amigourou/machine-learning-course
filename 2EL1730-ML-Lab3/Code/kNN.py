@@ -23,6 +23,19 @@ def kNN(k, X, labels, y):
     #       use the np.linalg.norm() function.
     #
 
+    distances = np.zeros((X.shape[0],1))
+    for j,x in enumerate(X) :
+        distances[j] += np.linalg.norm(x-y)
+
+    distances = distances.squeeze()
+    indices_sorted = np.argsort(distances)
+    distances.sort()
+
+    l = np.zeros(len(np.unique(labels)))
+    for i in range(k):
+        l[labels[indices_sorted[i]]] += 1
+    
+    label = list(l).index(np.max(l))
 
     # return the label of the test data
     

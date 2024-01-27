@@ -8,8 +8,8 @@ def gaussianKernel(X1, X2, sigma = 0.1):
     # Instructions: Calculate the Gaussian kernel (see the assignment
     #				for more details).
     
-
-
+    for k in range(m) : 
+        K[k,:] = np.exp(-np.linalg.norm(X1[k,:]-X2, axis = 1)**2/2*sigma**2)
     
     # =============================================================
 

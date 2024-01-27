@@ -9,8 +9,8 @@ def linearKernel(X1, X2):
     # Instructions: Calculate the linear kernel (see the assignment
     #				for more details).
     
-
-
+    for k in range(m):
+        K[k,:]  = np.dot(X2, X1[k,:])
     
     # =============================================================
         

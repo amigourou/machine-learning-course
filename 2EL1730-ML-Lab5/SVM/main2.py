@@ -8,7 +8,7 @@ import numpy as np
 # # Load the dataset
 # # The first two columns contains the exam scores and the third column
 # # contains the label.
-data = loadtxt('data2.txt', delimiter=',')
+data = loadtxt(r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab5\SVM\data2.txt', delimiter=',')
 
 X = data[:, 0:2] 
 y = data[:, 2]
@@ -20,11 +20,11 @@ plt.legend(['y = 1', 'y = 0'],numpoints=1)
 plt.show()
 
 
-sigma = 0.2 # Gaussian kernel variance
+sigma = 0.7 # Gaussian kernel variance
 # We calculate the Gaussian kernel between the instances/samples
 K = gaussianKernel(X,X,sigma)
 
-C = 0.0  # SVM regularization parameter
+C = 100  # SVM regularization parameter
 
 # We create an instance of SVM and fit out data. We do not scale our
 # data since we want to plot the support vectors

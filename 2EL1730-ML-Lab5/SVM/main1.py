@@ -8,7 +8,7 @@ import numpy as np
 # # Load the dataset
 # # The first two columns contains the exam scores and the third column
 # # contains the label.
-data = loadtxt('data1.txt', delimiter=',')
+data = loadtxt(r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab5\SVM\data1.txt', delimiter=',')
 
 X = data[:, 0:2] 
 y = data[:, 2]
@@ -19,7 +19,7 @@ plt.plot(X[:,0][y == 0], X[:,1][y == 0], 'bo', label="c2")
 plt.legend(['y = 1', 'y = 0'],numpoints=1)
 plt.show()
 
-C = 0.0  # SVM regularization parameter
+C = 100  # SVM regularization parameter
 
 # We calculate the linear kernel between the instances/samples
 K = linearKernel(X,X)

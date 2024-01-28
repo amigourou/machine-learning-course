@@ -13,9 +13,9 @@ def read_dataset(size_training, size_testing):
     if(size_testing > total_testing):
         size_testing = total_testing
 
-    random_training_instances = range(total_training)
+    random_training_instances = list(range(total_training))
     random.shuffle(random_training_instances)
-    random_testing_instances = range(total_testing)
+    random_testing_instances = list(range(total_testing))
     random.shuffle(random_training_instances)
    
     images_train = images_train.astype(float64)

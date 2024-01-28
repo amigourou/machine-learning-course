@@ -2,10 +2,6 @@ from numpy import *
 
 def sigmoid(z):
 
-    # SIGMOID returns sigmoid function evaluated at z
-    g = zeros(shape(z))
-
-    # ============================= TODO ================================
-    # Instructions: Compute sigmoid function evaluated at each value of z.
-
-    return g
+#   SIGMOID Compute sigmoid functoon
+#   J = SIGMOID(z) computes the sigmoid of z.
+    return 1.0 / (1.0 + exp(-z))

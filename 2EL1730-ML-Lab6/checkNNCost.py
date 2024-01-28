@@ -19,5 +19,5 @@ def checkNNCost(lambd):
     X = debugInitializeWeights(m, input_layer_size - 1)
     y = remainder(arange(m)+1, num_labels)
  
-    cost = costFunction(nn_params, layers, X, y, num_labels, lambd)
-    print('Cost: ' + str(cost))
+    print(costFunction(nn_params, layers, X, y, num_labels, lambd))
+    

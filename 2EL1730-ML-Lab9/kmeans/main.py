@@ -5,7 +5,7 @@ from sklearn import datasets
 from kmeans import kmeans
 from read_dataset import read_dataset
 import matplotlib.pyplot as plt
-from sklearn.datasets.samples_generator import make_blobs
+from sklearn.datasets import make_blobs
 
 
 ##############################################
@@ -50,11 +50,11 @@ n_instances = 1000
 pca_features = 8
 
 # Get the labels of each digit
-_, labels_mnist = read_dataset(n_instances, pca_features);
+_, labels_mnist = read_dataset(n_instances, pca_features)
 
 # Create the dataset (data_mnist) that will be used in clustering
 # load the PCA features of the test data set
-data_mnist = np.array(list(csv.reader(open("test_data.csv")))).astype('float')
+data_mnist = np.array(list(csv.reader(open(r"D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab9\kmeans\test_data.csv")))).astype('float')
 data_mnist = data_mnist[:n_instances,:pca_features] #only 8 first features are kept 
 
 # Plot 2 out of 8 dimensions of the dataset - colors correspond to true labels

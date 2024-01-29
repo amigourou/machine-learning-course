@@ -70,8 +70,8 @@ def load_mnist(dataset, digits=None, path='.', asbytes=False, selection=None, re
 
     # The files are assumed to have these names and should be found in 'path'
     files = {
-        'training': ('train-images-idx3-ubyte', 'train-labels-idx1-ubyte'),
-        'testing': ('t10k-images-idx3-ubyte', 't10k-labels-idx1-ubyte'),
+        'training': (r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab9\kmeans\train-images.idx3-ubyte', r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab9\kmeans\train-labels-idx1-ubyte'),
+        'testing': (r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab9\kmeans\t10k-images-idx3-ubyte', r'D:\Deep learning projects\machine-learning-course\2EL1730-ML-Lab9\kmeans\t10k-labels-idx1-ubyte'),
     }
 
     if path is None:

@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.cluster.vq import kmeans2
+from kmeans import kmeans
 from generateData import generateData
 from findClosestNeighbours import findClosestNeighbours
 from spectralClustering import spectralClustering
@@ -10,20 +11,20 @@ from sklearn.preprocessing import StandardScaler
 # Generate data
 data = generateData()
 
-# Plot data
-plt.figure(1)
-plt.scatter(data[:,0], data[:,1])  
-plt.xlabel('x1')  
-plt.ylabel('x2')  
-plt.ylim(-6, 6)  
-plt.xlim(-6, 6) 
-plt.show()
+# # Plot data
+# plt.figure(1)
+# plt.scatter(data[:,0], data[:,1])  
+# plt.xlabel('x1')  
+# plt.ylabel('x2')  
+# plt.ylim(-6, 6)  
+# plt.xlim(-6, 6) 
+# plt.show()
 
 # Number of clusters
 k = 3
 
 # Cluster using kmeans
-centroids, labels = kmeans2(data, k)
+centroids, labels = kmeans(data, k)
 
 # Plot clustering produced by kmeans
 plt.figure(2)
